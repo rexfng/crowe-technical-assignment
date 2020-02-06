@@ -1,0 +1,69 @@
+service: crowe
+plugins:
+  - serverless-offline
+  - serverless-s3-local
+provider:
+  name: aws
+  runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+# you can overwrite defaults here
+  stage: dev
+  region: ca-central-1
+
+# you can define service wide environment variables here
+  environment:
+    USER: userfuel
+    PASSWORD: UserPassw0rd
+    HOST: fuelservices.c55btmimc6xf.ca-central-1.rds.amazonaws.com
+    DATABASE: fuelservices
+    DEBUG: true
+
+functions:
+  system_check:
+    handler: handler.system_check
+    events:
+     - http:
+         path: system_check
+         method: get
+  fueltypes_restful_get:
+    handler: handler.fueltypes_restful_get
+    events:
+     - http:
+         path: fueltypes
+         method: get
+  fueltypes_restful_getbyid:
+    handler: handler.fueltypes_restful_getbyid
+    events:
+     - http:
+         path: fueltypes/{id}
+         method: get
+  fueltypes_restful_post:
+    handler: handler.fueltypes_restful_post
+    events:
+     - http:
+         path: fueltypes
+         method: post
+  fueltypes_restful_put:
+    handler: handler.fueltypes_restful_put
+    events:
+     - http:
+         path: fueltypes/{id}
+         method: put
+  fueltypes_restful_delete:
+    handler: handler.fueltypes_restful_delete
+    events:
+     - http:
+         path: fueltypes/{id}
+         method: delete
+  s3_xls_parser:
+    handler: handler.s3_xls_parser
+    events:
+      - s3: 
+        bucket: fuel-qoutes
+        event: s3:ObjectCreated:*
+        rules:
+          -suffix: .xlsx

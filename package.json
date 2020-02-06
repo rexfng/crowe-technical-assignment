@@ -1,0 +1,16 @@
+{
+  "name": "crowe",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {
+    "delete": "^1.1.0",
+    "lodash": "^4.17.15",
+    "node-wget": "^0.4.3",
+    "parse-path": "^4.0.1",
+    "postgresql-easy": "^1.2.5",
+    "xlsx": "^0.15.5"
+  },
+  "devDependencies": {
+    "serverless-s3-local": "^0.5.4"
+  }
+}

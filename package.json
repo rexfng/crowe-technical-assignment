@@ -6,7 +6,7 @@
     "delete": "^1.1.0",
     "lodash": "^4.17.15",
     "node-wget": "^0.4.3",
-    "parse-path": "^4.0.1",
+    "parse-path": "^5.0.0",
     "postgresql-easy": "^1.2.5",
     "xlsx": "^0.15.5"
   },

@@ -11,6 +11,6 @@
     "xlsx": "^0.15.5"
   },
   "devDependencies": {
-    "serverless-s3-local": "^0.5.4"
+    "serverless-s3-local": "^0.7.1"
   }
 }
